@@ -2,12 +2,12 @@
 
 # -- Project information
 
-project = 'Lumache'
-copyright = '2021, Graziella'
-author = 'Graziella'
+project = 'AIMS'
+copyright = '2022, Boughter'
+author = 'Boughter'
 
-release = '0.1'
-version = '0.1.0'
+release = '0.5'
+version = 'AIMS_0.5.5'
 
 # -- General configuration
 
