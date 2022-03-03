@@ -8,14 +8,13 @@ Notes on Notebooks
 ------------
 If using Anaconda-Navigator, you should just be able to launch Jupyter Lab from the main application. If using terminal, you can install Jupyter lab using:
 
-.. highlight:: python
 .. code-block:: python
     
     conda install -c conda-forge jupyterlab
 
 and start using the notebooks by navigating to the notebooks directory in terminal and typing in:
 
-.. highlight:: python
+.. code-block:: python
     
     jupyter lab
 
