@@ -15,7 +15,7 @@ These instructions will help novice programmers install all necessary packages a
 
 2. Test that your conda install is working properly by creating a conda environment. Windows OS users, you will likely do this within the Anaconda application. Mac/Linux users, open the terminal application. Once terminal is open, type:
 
-.. code-block:: bash   
+.. code-block:: 
     conda create -n aims-env python=3.7
 
 If anaconda/miniconda is installed properly, a Y/N prompt should appear. Type "y" then hit the "enter key" and you will create a conda environment.
@@ -24,7 +24,7 @@ If anaconda/miniconda is installed properly, a Y/N prompt should appear. Type "y
 
 4. Next, navigate to the new folder created from this repository. First, open up terminal and enter the environment created earlier by typing:
 
-.. code-block:: bash
+.. code-block::
     conda activate aims-env
 
 .. note::
@@ -45,7 +45,7 @@ The above section focused on the installation of the necessary software to run p
 
 1. From within the AIMS master directory, type in the terminal:
 
-.. code-block:: bash
+.. code-block::
     ./app/install_packages.sh
 
 .. warning::
@@ -58,7 +58,7 @@ This bash script should run after typing in this command, and you'll be prompted
 
 If the install_packages.sh script doesn't work, and you get some kind of an error instead of the prompts, type each of these lines (or copy/paste) one by one, hitting enter after each one:
 
-.. code-block:: bash
+.. code-block::
     conda install -c conda-forge biopython=1.76
     conda install -c conda-forge scipy=1.4.1
     conda install pandas=1.0.3
@@ -70,12 +70,12 @@ If the install_packages.sh script doesn't work, and you get some kind of an erro
 
 2. Everything should now be installed, you should now be able to open up the software! Navigate to the app in terminal by typing:
 
-.. code-block:: bash
+.. code-block::
     cd app
 
 3. Launch the GUI with:
 
-.. code-block:: bash
+.. code-block::
     python aims.py
 
 From there, the GUI should open. A step by step instruction guide for GUI usage can be found in the :doc:`AIMS_GUI` section. If you don't want to be bothered reading instructions, the app should prevent most major errors. If a "next" button is grayed out, make sure you've pressed all of the analysis buttons on the bottom of the current AIMS app screen.
