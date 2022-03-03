@@ -63,6 +63,7 @@ Here, we separate our loaded data into binary classes for some machine-learning 
 Whereas the biophysical properties of step 4 are averaged across entire molecules, we can instead average across our full molecular population. By doing so, we can look at average biophysical properties as a function of sequence space, part of our special “positional encoding”
 
 We only show charge and hydrophobicity, but position sensitive data for all 62 properties are saved in the same directory as pdf figures.
+
 .. note::
    Standard deviations are not shown, and ideally these would be calculated via bootstrapping 
 
