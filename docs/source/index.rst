@@ -1,14 +1,13 @@
 Using AIMS to Analyze Immune Repertoires
 ===================================
 
-
 .. note::
 
    Unsure how others found this website, but it isn't ready just yet! Come back soon for a complete documentation of AIMS!
 
 AIMS, an Automated Immune Molecule Separator, was originally developed to identify differences between two distinct immune repertoires, but has since expanded to become a multi-purpose repertoire analysis tool. Currently the AIMS analytical tools can be applied to immunoglobulin (Ig) molecules such as T cell receptors and antibodies, major histocompatibility complex (MHC) and MHC-like molecules, and immunopeptidomic data. This documentation will teach users how to use AIMS to:
 
-- **Get started** following the :doc:`Installation` intstructions. If you're coming here from the GitHub page, hopefully you already done this.
+- **Get started** following the :doc:`Install` intstructions. If you're coming here from the GitHub page, hopefully you already done this.
 
 
 - **Analyze repertoires with no programming experience required** in a user-friendly format with the :doc:`AIMS_GUI`.
@@ -29,11 +28,16 @@ AIMS is a python package distributed in both a notebook and GUI format. Those wi
 
    Boughter CT, Borowska MT, Guthmiller JJ, Bendelac A, Wilson PC, Roux B, Adams EJ. Biochemical Patterns of Antibody Polyreactivity Revealed Through a Bioinformatics-Based Analysis of CDR Loops. eLife. 2020. DOI: 10.7554/eLife.61393
 
+.. warning::
+   This is here so you know how to add in warnings! Will probably want to add one to let users know when certain things haven't been tested, etc. Make sure that we link to a "known issues" tab.
+
 Contents
 --------
 
 .. toctree::
+   :maxdepth: 2
 
+   Install
    AIMS_GUI
    AIMS_basics
    AIMS_cluster

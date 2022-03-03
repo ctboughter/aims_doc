@@ -11,6 +11,10 @@ version = 'AIMS_0.5.5'
 
 # -- General configuration
 
+# At some point, write a CSS file to change colors
+#def setup(app):
+#    app.add_css_file('custom.css')
+
 extensions = [
     'sphinx.ext.duration',
     'sphinx.ext.doctest',
