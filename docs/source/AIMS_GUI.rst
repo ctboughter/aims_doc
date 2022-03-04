@@ -82,70 +82,81 @@ There is no one right answer to determining the "best" dimensionality reduction 
 
 **Step 6: Visualize and Analyze Clustered Sequences**
 
-At this stage, we visualize the clustered sequences from the previous step.
+At this stage, we visualize the clustered sequences from the previous step. First, the user must hit the "Visualize Cluster" button, then after visual inspection of the clusters and sequences, the "comparison clusters" can be selected. The goal of this step is to determine whether the user wants to compare two biophysically distinct clusters which were identified in the previous step, or compare across the input datasets. We can see in the screenshot below how this works:
 
 .. figure:: screenshots/6Ig_compile.png
-   :alt: immuneML usage overview
+   :alt: Example screenshots of the AIMS cluster visualization step
 
-**Step 7: Define Binary Classes**
+After the cluster visualization is complete, we see in the right panel, left figure that the matrix from step 3 is rearranged to reflect the clustered sequences, with higher sequence conservation (colors in the matrix) evident within each cluster. In the right figure, we see the sequence count of each input dataset in each cluster.
 
-Here, we separate our loaded data into binary classes for some machine-learning based analysis.
+From this information, the user can determine which clusters they would like to analyze by entering values in the "Comparison Cluster" boxes. The cluster count starts at zero, and the user can infer the last cluster number from the figure on the right.
+
+If the user instead is still most interested in comparing the input datasets, the checkbox on the right side of the screen can be checked, ignoring the clustering of the data (but still saving the results in the output directory!).
+
+.. warning::
+   The clustering algorithms are stochastic, and so cluster ID and cluster membership may change each time the software is run. For instance, in this walkthrough I use clusters 10 and 11 for downstream analysis, but users trying to replicate this analysis may have different sequences in clusters 10 and 11. This is important both for comparisons in this walkthrough as well as creating reproducible analysis.
+
+**Step 7: Define Comparison Classes**
+
+.. note::
+   This screen is skipped when cluster analysis is chosen
+
+Here, we separate our loaded data into separate classes for downstream analysis, assuming the user opted not to compare clustered sequences. As a default, each loaded dataset is assigned to its own unique group, but the user may group these datasets however they choose by assigning matching group numbers to datasets they want analyzed together. For the immmunoglobulin analysis, the cluster comparison option is chosen, so this screen is not shown. To see the comparison class definition screen, jump to Step 7 in the :ref:`AIMSmhc`.
+
+.. warning::
+   If comparing more than two distinct groups, some of the analysis will be unavailble. These analyses include mutual information analysis, amino acid frequency characterization, and linear discriminant analysis. Each of these analyses require binary classifications of the data.
 
 **Step 8: Visualize Averaged Position Sensitive Biophysical Properties**
 
-Whereas the biophysical properties of step 4 are averaged across entire molecules, we can instead average across our full molecular population. By doing so, we can look at average biophysical properties as a function of sequence space, part of our special “positional encoding”
+ In this step we look at average biophysical properties as a function of sequence space, part of our special “positional encoding”. At this stage in the walkthrough we won't bother showing the "before" snapshots of the GUI, as the only options are to press the button which generates the plot, and then move on to the next step. However, if you're trying to compare the results to the data we get in this walkthrough, the generated plots are quite useful:
 
 .. figure:: screenshots/8IgF.png
-   :alt: immuneML usage overview
-
-We only show charge and hydrophobicity, but position sensitive data for all 62 properties are saved in the same directory as pdf figures.
+   :alt: Example screenshot of the averaged position-sensitive biophysical properties
 
 .. note::
    Standard deviations are not shown, and ideally these would be calculated via bootstrapping 
 
 **Step 9: Visualize Raw Position Sensitive Biophysical Properties**
 
-Unlike PCA, linear discriminant analysis (LDA) is designed to split binary classes of data
+In this step, we visualize the position sensitive charge for all clones, not averaged. This figure can help provide a sense of how reliable the averages on the previous step are. Like all biophysical properties in AIMS, the charge is normalized, hence the minimum and maximum on the scales not equaling 1.
 
 .. figure:: screenshots/9IgF.png
-   :alt: immuneML usage overview
-
-Effectively, we can use it to find where the strongest differences in the data are
+   :alt: Example screenshot of the non-averaged position-sensitive biophysical properties
 
 **Step 10: Visualize Net Biophysical Properties**
 
-Something else here
+In this step, we are averaging the biophysical properties over all positions and all receptors.
 
 .. figure:: screenshots/10IgF.png
-   :alt: immuneML usage overview
+   :alt: Example screenshot of the net biophysical property figure step
 
 **Step 11: Calculate Shannon Entropy**
 
-Something else here
+In this step, we are calculating the Shannon Entropy of the chosen datasets, effectively the diversity of the receptors as a function of position. For more information on the Shannon Entropy, as well as the Mutual Information discussed in the next step, view the Information Theory section of the :ref:`core`.
 
 .. figure:: screenshots/11IgF.png
-   :alt: immuneML usage overview
+   :alt: Example screenshot of the shannon entropy step
 
 **Step 12: Calculate Receptor Mutual Information**
 
-Something else here
+In this step, we calculate the mutual information between the individual posiitons in the AIMS matrix. The y-axis provides the "given" amino acid, and the x-axis provides the amount of information we gain at every other position given the amino acid identity at the "given" position. We present this data as a difference between the mutual information of group 1 and the mutual information of group 2. 
 
 .. figure:: screenshots/12IgF.png
-   :alt: immuneML usage overview
+   :alt: Example screenshot of the mutual information calculation
 
 **Step 13: Visualize Amino Acid Frequencies**
 
-Something else here
+Differences in frequencies, discuss what the colors mean.
 
 .. figure:: screenshots/13IgF.png
-   :alt: immuneML usage overview
+   :alt: Example screenshot of the amino acid frequency visualization
 
 **Step 14: Linear Discriminant Analysis**
 
-Something else here
+Linear discriminant analysis, be sure to say what is being discriminated. 
 
 .. figure:: screenshots/14Ig_compile.png
-   :alt: immuneML usage overview
+   :alt: Example screenshot of the linear discriminant analysis
 
 .. warning::
    Care must be taken not to overfit. If the number of input vctors is greater than the size of one of your datasets, you will overfit the data
