@@ -1,85 +1,97 @@
 AIMS GUI Walkthrough
 =====
+The AIMS analysis pipeline has been used to analyze a wide range of molecular species, including TCRs, antibodies, MHC molecules, MHC-like molecules, MHC-presented peptides, viral protein alignments, and evolutionarily conserved neuronal proteins. The GUI is currently only capable of analyzing these first four molecular species, with more analysis options hopefully available in the future.
 
-This section will provide a step-by-step walkthrough outlining how to use the AIMS GUI. The focus will be primarily on how to interface with the GUI, how files are saved when using the GUI, and tips and tricks for a smooth AIMS experience. Before starting the GUI, you may want to check out the :doc:`AIMS_basics` and review the :ref:`formatting` and :ref:`core`. 
+This section will provide a step-by-step walkthrough outlining how to use the AIMS Graphical User Interface (GUI) through screenshots of the app. The focus will be primarily on how to interface with the GUI, how files are saved when using the GUI, and tips and tricks for a smooth AIMS experience. Before starting the GUI, you may want to check out the :doc:`AIMS_basics` and review the :ref:`formatting` and :ref:`core`.
+
+When launching the GUI, this screen should be the first thing that you see:
 
 .. figure:: screenshots/0launch.png
-   :alt: immuneML usage overview
+   :alt: The launch screen of the AIMS GUI
+
+The navigation through the AIMS GUI is linear and button-based, allowing users to simply click through all of the analysis. If you'd like to analyze antibody (Ab) or T cell receptor (TCR) sequences, start with the :ref:`AIMSig` section. If you'd like to analyze MHC and MHC-like molecules, skip down to the :ref:`AIMSmhc` section.
 
 .. _AIMSig:
 
 Immunoglobulin Analysis with AIMS
 ------------
-The AIMS analysis pipeline has been used to analyze a wide range of molecular species, including TCRs, antibodies, MHC molecules, MHC-like molecules, MHC-presented peptides, viral protein alignments, and evolutionarily conserved neuronal proteins. The GUI is currently only capable of analyzing these first four molecular species, with more analysis options hopefully available in the future. This section is specifically for the analysis of T cell receptors and antibodies. If you'd like to analyze MHC and MHC-like molecules, skip down to the :ref:`AIMSmhc` section.
+This section is specifically for the analysis of T cell receptors and antibodies. The analysis and formatting are identical for each of these receptor types, and one could even analyze these receptor types simultaneously, if for some reason one wanted to.
 
 **Step 1: Loading in Data**
 
-Load in data on this screen, and determine how many distinct datasets you want to compare.
-
-.. note::
-   See ab_testData/ flu_poly.csv for formatting example
-
-Once you click one of those dark gray “load” buttons, you should get a screen that looks like this:
+Assuming the input data is already properly formatted, everything should easily flow through the GUI and generate all data required. The first screen after selecting the Ig analysis should look like the first panel in the below image:
 
 .. figure:: screenshots/1Ig_compile.png
-   :alt: immuneML usage overview
+   :alt: Example screenshot of the data loading screen
 
-If following along with this walkthrough, select the "ab_testData" directory and load in poly_flu.csv and mono_flu.csv
+Once you click one of those light gray “Load File” buttons, you should get a screen that looks like the image in the second panel. From this, you can click through your directories and select the file you want to load in. If the file has been properly loaded, the File Path should be updated to reflect the file location.
+
+.. note::
+   If following along with this walkthrough, select the "ab_testData" directory and load in flu_mono.csv and flu_poly.csv
+
+If you would like to analyze only one dataset using AIMS, change the "ON/OFF" switch in the top right-hand corner to "ON". Otherwise, the AIMS GUI will require at least two datasets to be loaded into the analysis. Additionally, if the data of interest is spread across more than four files, click the "add more files" option to increase the number of file slots on the screen. As of AIMS_0.5.5, a max of 9 files may be analyzed at once.
 
 **Step 2: Define Names and Outputs**
 
-On this page, we define the folder outputs are saved to. This is pretty key in AIMS, as by default files are overwritten if the analysis is run multiple times. As such, each new analysis should have a new output folder, ideally with descriptive titles.
+In this step, we define the folder which the outputs are saved to, the labels that will accompany the datasets in figure legens, and the number of CDR loops in the input data. Further, the AIMS GUI removes expanded clones and sequence duplicates by default. Uncheck the box if you'd like to include degenerate receptors.
 
 .. figure:: screenshots/2IgID.png
-   :alt: immuneML usage overview
+   :alt: Example screenshot of the directory naming and dataset labelling step
 
-Below, we can change label names for each file loaded. Lastly, you must specify how many loops are in the files loaded in step1.
+.. warning::
+   Defining the output directory is very important, as by default files are overwritten if the analysis is run multiple times. Ideally each new run of AIMS should be output to a new directory, with a descriptive title.
 
 **Step 3: Generate the Sequence Matrix**
 
-In this window, you can just click “get matrix” to generate the matrix for this step. This matrix must be generated for subsequent steps to function properly
+In this step, we begin the dive in to the automated portion of the "Automated Immune Molecule Separator", generating an AIMS-encoded matrix form of the sequences in our dataset. Most steps from here on require a simple clicking of a button, here "Get Matrix", and moving on to the next step. Users are given the option to change the AIMS aligments scheme, with "Center Align" as the default option. See the :ref:`core` section of the documentation for more information on these alignment schemes. As an example, both the central alignment (center panel) and the bulge alignment (right panel) are highlighted below. 
 
 .. figure:: screenshots/3Ig_compile.png
-   :alt: immuneML usage overview
+   :alt: Example screenshots of the AIMS matrix generation step
 
-Congrats! You’ve generated your first piece of data using this software. You might notice that your image quality is poor for figures shown in the app, this is because the software shows *png files. Don’t worry, both versions of the plot are saved in whichever directory you specified in Step 2
+Congrats! You’ve generated your first piece of data using this software. You might notice that your image quality is poor for figures shown in the app, this is because the software shows *png files. Don’t worry, both a *png and a higher-quality *pdf version of the plot are saved in whichever directory you specified in Step 2.
 
-**Step 4: Calculate Biophysical Properties**
+**Step 4: Generate High-Dimensional Biophysical Matrix**
 
-Again, we simply press the “get properties” button. If a matrix was not generated in the previous window, then this step will fail. Don’t worry if this step takes a little while, especially for bigger data. The code needs a little work, but is accurate
+In this step, we generate the high-dimensional biophysical property matrix that will be used in all downstream analysis. We then have the option to include or exclude files from the clustering that will happen in the next step. If only one or two datasets are included in the analysis, all input data must be included in the clustering. Again, we simply press the “Generate Matrix” button, shown below, and then users can move on to the next step. 
 
 .. figure:: screenshots/4IgPost.png
-   :alt: immuneML usage overview
+   :alt: Example screenshot of data inclusion/exclusion step
 
-Again, if you’re following along, you should see this exact plot once the calculation finishes. Plotted are average and standard deviations of these normalized biophysical properties. Each sequence has one value for each of these properties. i.e. flu_poly_sequence1 has charge = -0.01, hydrophobicity = 0.05, etc. (values made up)
+.. note::
+   Don’t worry if this step takes a little while, especially for larger datasets
 
-**Step 5: Define Which Files to Group and Plot**
+**Step 5: Dimensionality Reduction and Receptor Clustering**
 
-In this step, you can really take some freedoms and play around. What we are doing here is telling the software which groups we want to feed into the PCA analysis
-Then, in the ”Plotted Group” section, we are letting the software know which groups will be shown on the resultant plot. Even if a group was used in the analysis, it doesn’t need to be plotted (and vice versa)
+The goal in this step is to take that large biophysical property matrix generated in the previous step, and reduce this high-dimensional matrix down to two or three composite dimensions, and then cluster the receptors projected onto this space based upon distance in this projected space. This step is perhaps the most involved in the GUI, with the most customizable options. First, the user must decide if they would like to reduce dimensionality on Net Average Properties, i.e. the biophysical properties averaged across entire receptors, or on the Position Sensitive Properties, i.e. the amino acid biophysical properties at every position on every receptor.
+
+Next, the algorithm used for this dimensionality reduction must be chosen. Users can choose either Principal Component Analysis (PCA) or Uniform Manifold Approximation and Projection (UMAP), and additionally choose to visualize these projections in two- or three-dimensions. Once these options are chosen, click the "Reduce Dim" button to visualize these options. More options can be tested and the projection re-visualized as many times as the user desires.
+
+Lastly, the data is then clustered using one of three algorithms, either K-Means, OPTICS, or DBSCAN clustering. Users must also define, for each of these algorithms, a tunable parameter that determines the size of the clusters generated. We can see each of these options, and the default values for the tunable parameters, in the screenshots below.
 
 .. figure:: screenshots/5Ig_compile.png
-   :alt: immuneML usage overview
+   :alt: Example screenshots of dataset dimensionality reduction and receptor clutering
 
-.. note:: 
-   No options are given if only comparing two datasets. See MHC example for possibilities when there are three or more datasets.
+For more detail on how these dimensionality reduction and clustering algorithms work, as well as details on the tunable parameters, please see the :ref:`core`.
 
-**Step 6: Run and Plot PCA**
+In the above screenshots, we see first the default screen (top left), then the three-dimensional PCA projection (top right), followed by a Kmeans clustering with 5 clusters (bottom left), and lastly an OPTICS clustering with a minimum cluster size of 5 (bottom right). Users should note that Kmeans will cluster all sequences in the dataset, while OPTICS and DBSCAN will exlude sequences that are not found at a sufficient density in the projection. These unclustered sequences are grayed out in the resultant displayed figure.
 
-On this screen, we take the properties form step 4 and run a PCA on them
-If you choose to exclude certain data from the PCA, but still plot it, then you are simply projecting that data onto the calculated principal component.
+There is no one right answer to determining the "best" dimensionality reduction or clustering algorithm, so users are encouraged to try a range of options to determine which combination makes the most sense for their data.
+
+.. note::
+   Whichever projection and clustering algorithm the user is currently viewing when moving to the next step is what will be used in all downstream analysis
+
+**Step 6: Visualize and Analyze Clustered Sequences**
+
+At this stage, we visualize the clustered sequences from the previous step.
 
 .. figure:: screenshots/6Ig_compile.png
    :alt: immuneML usage overview
-
-Along with a plot of the first 3 PCs, we also report the explained variance of these PCs, and the top 10 weights that make up PC1.
-A 2D plot is also included in the saved figures.
 
 **Step 7: Define Binary Classes**
 
 Here, we separate our loaded data into binary classes for some machine-learning based analysis.
 
-**Step 8: Generate Position Sensitive Biophysical Properties**
+**Step 8: Visualize Averaged Position Sensitive Biophysical Properties**
 
 Whereas the biophysical properties of step 4 are averaged across entire molecules, we can instead average across our full molecular population. By doing so, we can look at average biophysical properties as a function of sequence space, part of our special “positional encoding”
 
@@ -91,7 +103,7 @@ We only show charge and hydrophobicity, but position sensitive data for all 62 p
 .. note::
    Standard deviations are not shown, and ideally these would be calculated via bootstrapping 
 
-**Step 9: Linear Discriminant Analysis**
+**Step 9: Visualize Raw Position Sensitive Biophysical Properties**
 
 Unlike PCA, linear discriminant analysis (LDA) is designed to split binary classes of data
 
@@ -100,35 +112,35 @@ Unlike PCA, linear discriminant analysis (LDA) is designed to split binary class
 
 Effectively, we can use it to find where the strongest differences in the data are
 
-**Step 10: Information Theory**
+**Step 10: Visualize Net Biophysical Properties**
 
 Something else here
 
 .. figure:: screenshots/10IgF.png
    :alt: immuneML usage overview
 
-**Step 11: Honestly I forget**
+**Step 11: Calculate Shannon Entropy**
 
 Something else here
 
 .. figure:: screenshots/11IgF.png
    :alt: immuneML usage overview
 
-**Step 12: Honestly I forget**
+**Step 12: Calculate Receptor Mutual Information**
 
 Something else here
 
 .. figure:: screenshots/12IgF.png
    :alt: immuneML usage overview
 
-**Step 13: Honestly I forget**
+**Step 13: Visualize Amino Acid Frequencies**
 
 Something else here
 
 .. figure:: screenshots/13IgF.png
    :alt: immuneML usage overview
 
-**Step 14: Honestly I forget**
+**Step 14: Linear Discriminant Analysis**
 
 Something else here
 

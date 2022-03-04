@@ -9,6 +9,7 @@ Input Formatting
 Pretty obvious what we want here
 
 .. _core:
+
 Core Functionalities
 ------------
 
