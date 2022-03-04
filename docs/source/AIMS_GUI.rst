@@ -21,7 +21,7 @@ Load in data on this screen, and determine how many distinct datasets you want t
 
 Once you click one of those dark gray “load” buttons, you should get a screen that looks like this:
 
-.. figure:: screenshots/1Ig_compile.pdf
+.. figure:: screenshots/1Ig_compile.png
    :alt: immuneML usage overview
 
 If following along with this walkthrough, select the "ab_testData" directory and load in poly_flu.csv and mono_flu.csv
@@ -39,7 +39,7 @@ Below, we can change label names for each file loaded. Lastly, you must specify 
 
 In this window, you can just click “get matrix” to generate the matrix for this step. This matrix must be generated for subsequent steps to function properly
 
-.. figure:: screenshots/3Ig_compile.pdf
+.. figure:: screenshots/3Ig_compile.png
    :alt: immuneML usage overview
 
 Congrats! You’ve generated your first piece of data using this software. You might notice that your image quality is poor for figures shown in the app, this is because the software shows *png files. Don’t worry, both versions of the plot are saved in whichever directory you specified in Step 2
@@ -58,7 +58,7 @@ Again, if you’re following along, you should see this exact plot once the calc
 In this step, you can really take some freedoms and play around. What we are doing here is telling the software which groups we want to feed into the PCA analysis
 Then, in the ”Plotted Group” section, we are letting the software know which groups will be shown on the resultant plot. Even if a group was used in the analysis, it doesn’t need to be plotted (and vice versa)
 
-.. figure:: screenshots/5Ig_compile.pdf
+.. figure:: screenshots/5Ig_compile.png
    :alt: immuneML usage overview
 
 .. note:: 
@@ -69,7 +69,7 @@ Then, in the ”Plotted Group” section, we are letting the software know which
 On this screen, we take the properties form step 4 and run a PCA on them
 If you choose to exclude certain data from the PCA, but still plot it, then you are simply projecting that data onto the calculated principal component.
 
-.. figure:: screenshots/6Ig_compile.pdf
+.. figure:: screenshots/6Ig_compile.png
    :alt: immuneML usage overview
 
 Along with a plot of the first 3 PCs, we also report the explained variance of these PCs, and the top 10 weights that make up PC1.
@@ -132,7 +132,7 @@ Something else here
 
 Something else here
 
-.. figure:: screenshots/14Ig_compile.pdf
+.. figure:: screenshots/14Ig_compile.png
    :alt: immuneML usage overview
 
 .. warning::
