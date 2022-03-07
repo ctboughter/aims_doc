@@ -182,7 +182,7 @@ This figure is saved as "frequency.pdf/png". The raw position senesitive frequen
 
 **Step 14: Linear Discriminant Analysis**
 
-In the original eLife manuscript, linear discriminant analysis was used to classify antibody sequences as "polyreactive" or "non-polyreactive" (see https://elifesciences.org/articles/61393). In this step, we use the same framework to instead classify either the selected clusters or the user-defined groups analyzed in the previous steps. For a deeper description of linear discriminant analysis, see :ref:`core`. So, while in the eLife manuscript the linear discriminant is a proxy for polyreactivity, in the AIMS GUI the linear discriminant is a metric of "more like group 1" or "more like group2". An example of overfit data (from a cluster analysis, left) and of a proper application of linear discriminant analysis (from a group analysis, right) can be seen below:
+In the original eLife manuscript, linear discriminant analysis was used to classify antibody sequences as "polyreactive" or "non-polyreactive" (see https://elifesciences.org/articles/61393). In this step, we use the same framework to instead classify either the selected clusters or the user-defined groups analyzed in the previous steps. For a deeper description of linear discriminant analysis, see :ref:`core`. So, while in the eLife manuscript the linear discriminant is a proxy for polyreactivity, in the AIMS GUI the linear discriminant is a metric of "more like group 1" or "more like group 2". An example of overfit data (from a cluster analysis, left) and of a proper application of linear discriminant analysis (from a group analysis, right) can be seen below:
 
 .. figure:: screenshots/14Ig_compile.png
    :alt: Example screenshot of the linear discriminant analysis
@@ -196,7 +196,6 @@ The LD1 “names” and “weights” refer to the top ten weights that most str
    You can tell that the left panel is overfit in part by the exaggerated weights, compared to the non-overfit weights in the right panel
 
 **END Ig Analysis**
-------------
 
 Congratulations for making it through the GUI walkthrough, and thanks again for using the software! Be sure to reach out if any part of this walkthrough is unclear or if there are questions/features you would like addressed in greater detail.
 
@@ -204,7 +203,7 @@ Congratulations for making it through the GUI walkthrough, and thanks again for 
 
 MHC and MHC-Like Analysis with AIMS
 ------------
-While a niche application of the software, AIMS readily extends to the analysis of any evolutionarily conserved molecules with specific regions of variability. MHC and MHC-like molecules fit very well into this category, and in the first published usage of AIMS, these moleclules were analyzed using the same tools as the immunoglobulin analysis. This section highlights the unique portions of the MHC analysis, and points out to where the analysis breaks down to become identical to the :ref:`AIMSig`.
+While a niche application of the software, AIMS readily extends to the analysis of any evolutionarily conserved molecules with specific regions of variability. MHC and MHC-like molecules fit very well into this category, and in the first published usage of AIMS, these moleclules were analyzed using the same tools as the immunoglobulin analysis. This section highlights the unique portions of the MHC analysis, and reiterates many of the points discussed in the above section for users only interested in the MHC and MHC-like analysis.
 
 .. note::
    Much of this documentation will be a verbatim repeat of the steps outlined above in the :ref:`AIMSig`, save for the first two steps which differ significantly
@@ -254,7 +253,7 @@ Additionally, as you move through the sequential steps of the GUI, keep in mind 
 
 In this step, we generate the high-dimensional biophysical property matrix that will be used in all downstream analysis. We then have the option to include or exclude files from the clustering that will happen in the next step. If only one or two datasets are included in the analysis, all input data must be included in the clustering. Again, we simply press the “Generate Matrix” button, shown below, and then users can move on to the next step. 
 
-.. figure:: screenshots/4MHCPost.png
+.. figure:: screenshots/4MHCpost.png
    :alt: Example screenshot of data inclusion/exclusion step
 
 .. note::
@@ -357,38 +356,8 @@ This figure is saved as "shannon.pdf/png".
 .. note::
    Due to the requirement for a binary comparison in subsequent steps, this is the last GUI screen if users are comparing more than 2 groups
 
-**Step 12: Calculate Receptor Mutual Information**
+** END MHC Analysis **
 
-In this step, we calculate the mutual information between the individual posiitons in the AIMS matrix. The y-axis provides the "given" amino acid, and the x-axis provides the amount of information we gain at every other position when we know the amino acid identity at the "given" position. We present this data as a difference between the mutual information of group 1 and the mutual information of group 2. The y-axis is measured in "Bits" the fundamental unit of information, with a positive value (green) indicating higher mutual information in the first group (here "Cluster 10") and a negative value (pink) indicating higher mutual information in the second group (here "Cluster 11").
+Due to the analysis of three distinct groups in this walkthrough, the MHC analysis ends here at step 11. However, as discussed previously these steps are identical to those in the immunoglobulin analysis. If you'd like to learn more about steps 12, 13, and 14, go back to the end of the :ref:`AIMSig`.
 
-.. figure:: screenshots/12IgF.png
-   :alt: Example screenshot of the mutual information calculation
-
-This figure is saved as "MI.pdf/png". The raw information matrices are saved as "MI_mat1.dat" amd "MI_mat2.dat", and should be symmetric matrices with shape # AIMS postions x # AIMS positions. 
-
-.. note::
-   Shannon entropy and mutual information are always positive, i.e. there is no "negative information", so we can be confident that negative values in this figure mean "higher mutual information in the second group" rather than "negative mutual information in the first group".
-
-**Step 13: Visualize Amino Acid Frequencies**
-
-In this step, we calculate the position sensitive amino acid frequnecy for each analyzed cluster or group, and plot the difference. The simply reports these differences in frequency, with a positive value (green) indicating higher frequency of a given residue at a given position in the first group (here "Cluster 10") and a negative value (pink) indicating higher frequency in the second group (here "Cluster 11").
-
-.. figure:: screenshots/13IgF.png
-   :alt: Example screenshot of the amino acid frequency visualization
-
-This figure is saved as "frequency.pdf/png". The raw position senesitive frequencies for each cluster or group are saved as "frequency_mat1.dat" amd "frequency_mat2.dat", with each row corresponding to the AIMS position, and each column corresponding to the amino acids in the same order as they are presented in the figure. 
-
-**Step 14: Linear Discriminant Analysis**
-
-In the original eLife manuscript, linear discriminant analysis was used to classify antibody sequences as "polyreactive" or "non-polyreactive" (see https://elifesciences.org/articles/61393). In this step, we use the same framework to instead classify either the selected clusters or the user-defined groups analyzed in the previous steps. For a deeper description of linear discriminant analysis, see :ref:`core`. So, while in the eLife manuscript the linear discriminant is a proxy for polyreactivity, in the AIMS GUI the linear discriminant is a metric of "more like group 1" or "more like group2". An example of overfit data (from a cluster analysis, left) and of a proper application of linear discriminant analysis (from a group analysis, right) can be seen below:
-
-.. figure:: screenshots/14Ig_compile.png
-   :alt: Example screenshot of the linear discriminant analysis
-
-.. warning::
-   Care must be taken not to overfit. If the number of input vctors is greater than (or similar to) the size of one of your datasets, you will likely overfit the data
-
-The LD1 “names” and “weights” refer to the top ten weights that most strongly split the data. In other words, LDA not only functions as a classifier, it also works as a means to identify the biophysical features that best discriminate between two datasets. The generated figure is saved simply as "lda.pdf/png" while the raw data to recreate the plot is saved as "lda_data.dat". Lastly, the linear weights from which the linear discriminant is generated are saved as "lda_weights.dat". The AIMS GUI will show at most the top ten weights, but users can split their data using as many features as they choose (assuming this number is less than the available features).
-
-.. note::
-   You can tell that the left panel is overfit in part by the exaggerated weights, compared to the non-overfit weights in the right panel
+Otherwise, congratulations on completing the AIMS MHC walkthrough! Thanks for using the software, and be sure to reach out if there are any outstanding questions/unclear sections of this walkthrough.
