@@ -1,6 +1,9 @@
 Using AIMS to Analyze Immune Repertoires
 ===================================
 
+.. figure:: images/ania2.png
+   :alt: AIMS Graphic By Ania Borowska
+
 .. note::
 
    Unsure how others found this website, but it isn't ready just yet! Come back soon for a complete documentation of AIMS!

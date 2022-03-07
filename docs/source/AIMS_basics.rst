@@ -14,3 +14,10 @@ Core Functionalities
 ------------
 
 Go into the fundamentals of AIMS. What are the goals? How does it work? Maybe link out to other sections for deeper dives. Have a separate "the fundamentals" large section
+
+.. _bphysProp:
+
+Biophysical Properties
+------------
+
+Need to take the table from the eLife paper and put it here for easier reference.
